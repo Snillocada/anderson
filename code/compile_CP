@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo apt install g++
+sudo apt update
+
+cd $1
+
+g++ -std=c++14 -c main.cpp -o main.o
+g++ -std=c++14  main.o -o $1.exe
+
+mv $1.exe ../

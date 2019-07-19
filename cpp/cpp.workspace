@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="cpp" Database="" Version="10.0.0">
+  <Project Name="pop_dynam" Path="pop_dynam/pop_dynam.project" Active="No"/>
+  <Project Name="IPR" Path="IPR/IPR.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="pop_dynam" ConfigName="Debug"/>
+      <Project Name="IPR" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="pop_dynam" ConfigName="Release"/>
+      <Project Name="IPR" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
