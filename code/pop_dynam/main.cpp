@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
     size_t degree {stoul(argv[4])};
     double epsilon {stod(argv[5])};
     double disorder {stod(argv[6])};
-    
+
     vector<double> mean_vec(grains);
     vector<double> lambda_vec(grains,0);
     
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
         z = complex<double>(lambda_vec.at(i),-epsilon);
         vector<complex<double>> curr_vec(population_num,1);
         
-        size_t total_iter {population_num*100};
+        size_t total_iter {100*population_num};
         
         for (size_t iter {0}; iter<total_iter; iter++){
 //            int k = CPdistribution(generator);
@@ -50,9 +50,9 @@ int main(int argc, char* argv[]){
             curr_vec.at(j) = 1.0/curr_sum;
         }
         
-        vector<complex<double>> pop_vec(100*population_num);
+        vector<complex<double>> pop_vec(population_num);
         
-        for (size_t iter {0}; iter<total_iter; iter++){
+        for (size_t iter {0}; iter<population_num; iter++){
 //            int k = Pdistribution(generator);
             double W = UDdistribution(generator);
             
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
         for (auto g:pop_vec){
             mean_sum += imag(g);
         }
-        mean_vec.at(i) = abs(mean_sum/(100*population_num*M_PI));
+        mean_vec.at(i) = abs(mean_sum/(population_num*M_PI));
         
     }
     
