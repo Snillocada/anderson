@@ -11,7 +11,7 @@
 #include <string.h>
 
 using namespace std;
-main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
     size_t grains {stoul(argv[1])};
     double support {stod(argv[2])};
     size_t population_num {stoul(argv[3])};

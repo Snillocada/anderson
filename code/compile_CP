@@ -9,3 +9,6 @@ g++ -std=c++14 -c main.cpp -o main.o
 g++ -std=c++14  main.o -o $1.exe
 
 mv $1.exe ../
+
+sudo apt install python3-pip
+sudo pip3 install matplotlib
