@@ -6,15 +6,15 @@ import numpy as np
 
 grains = 100
 support = 6
-population_num = 1000000
+population_num = 100000
 degree = 3
-epsilon = 0.0001
-disorder = 15
+epsilon = 0.000000001
+disorder = 17
 average_type = "mean"
 
 lambda_vec = np.linspace(-support,support,grains)+disorder
 
-repeats = 100
+repeats = 20
 
 sum_vec = np.zeros(grains)
 
@@ -30,7 +30,7 @@ plt.plot(lambda_vec, aver_vec)
 plt.title("Varied disorder for RRG pop_num = {}, degree {}".format(population_num,degree))
 plt.xlabel("Disorder")
 plt.ylabel("Spectral Density")
-plt.savefig('mobility_edge_{}_D{}.png'.format(average_type, degree), bbox_inches='tight')
+plt.savefig('mobility_edge_{}_D{}.png'.format(average_type, disorder), bbox_inches='tight')
 subprocess.run("gsutil mv mobility_edge_{}_D{}.png gs://anderson_loc/figures/".format(average_type, degree),shell=True)
 
 average_type = "stddev"
@@ -52,6 +52,6 @@ plt.plot(lambda_vec, aver_vec)
 plt.title("Varied disorder for RRG pop_num = {}, degree {}".format(population_num,degree))
 plt.xlabel("Disorder")   
 plt.ylabel("Spectral Density") 
-plt.savefig('mobility_edge_{}_D{}.png'.format(average_type, degree), bbox_inches='tight')
+plt.savefig('mobility_edge_{}_D{}.png'.format(average_type, disorder), bbox_inches='tight')
 
 subprocess.run("gsutil mv mobility_edge_{}_D{}.png gs://anderson_loc/figures/".format(average_type, degree),shell=True)
