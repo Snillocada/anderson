@@ -3,6 +3,7 @@ from subprocess import PIPE
 
 import matplotlib.pyplot as plt
 import numpy as np
+import csv
 
 grains = 100
 support = 6
@@ -14,7 +15,7 @@ average_type = "mean"
 
 lambda_vec = np.linspace(-support,support,grains)+disorder
 
-repeats = 20
+repeats = 150
 
 sum_vec = np.zeros(grains)
 
@@ -30,8 +31,15 @@ plt.plot(lambda_vec, aver_vec)
 plt.title("Varied disorder for RRG pop_num = {}, degree {}".format(population_num,degree))
 plt.xlabel("Disorder")
 plt.ylabel("Spectral Density")
+plt.yscale('log')
 plt.savefig('mobility_edge_{}_D{}.png'.format(average_type, disorder), bbox_inches='tight')
-subprocess.run("gsutil mv mobility_edge_{}_D{}.png gs://anderson_loc/figures/".format(average_type, degree),shell=True)
+
+with open('mobility_edge_{}_D{}_data.csv'.format(average_type, disorder),'w') as myfile1:
+    wr1 = csv.writer(myfile1, quoting=csv.QUOTE_ALL)
+    wr1.writerow(aver_vec.tolist())
+
+subprocess.run("gsutil mv mobility_edge_{}_D{}.png gs://anderson_loc/figures/".format(average_type, disorder),shell=True)
+subprocess.run("gsutil mv mobility_edge_{}_D{}_data.csv gs://anderson_loc/data/".format(average_type, disorder),shell=True)
 
 average_type = "stddev"
 
@@ -51,7 +59,13 @@ plt.figure()
 plt.plot(lambda_vec, aver_vec)
 plt.title("Varied disorder for RRG pop_num = {}, degree {}".format(population_num,degree))
 plt.xlabel("Disorder")   
-plt.ylabel("Spectral Density") 
+plt.ylabel("Spectral Density")
+plt.yscale('log')
 plt.savefig('mobility_edge_{}_D{}.png'.format(average_type, disorder), bbox_inches='tight')
 
-subprocess.run("gsutil mv mobility_edge_{}_D{}.png gs://anderson_loc/figures/".format(average_type, degree),shell=True)
+with open('mobility_edge_{}_D{}_data.csv'.format(average_type, disorder),'w') as myfile2:
+    wr2 = csv.writer(myfile2, quoting=csv.QUOTE_ALL)
+    wr2.writerow(aver_vec.tolist())
+
+subprocess.run("gsutil mv mobility_edge_{}_D{}.png gs://anderson_loc/figures/".format(average_type, disorder),shell=True)
+subprocess.run("gsutil mv mobility_edge_{}_D{}_data.csv gs://anderson_loc/data/".format(average_type, disorder),shell=True)
