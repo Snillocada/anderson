@@ -11,7 +11,7 @@ degree = 3
 epsilon = 1e-150
 disorder = 15
 average_type = "mean"
-energy = 0.0
+energy = 2.0
 num_iterations = 1e3
 
 lambda_vec = np.linspace(-support,support,grains)+disorder
