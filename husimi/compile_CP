@@ -12,3 +12,4 @@ mv $1.exe ../
 
 sudo apt install python3-pip
 sudo pip3 install matplotlib
+sudo pip3 install networkx
