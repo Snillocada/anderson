@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
     for (size_t i {0};i<grains;i++){
         lambda_vec.at(i) = (i-((static_cast<double>(grains)-1)/2))*(support*2/(grains-1));
         
-        z = complex<double>(-lambda_vec.at(i),epsilon);
+        z = complex<double>(lambda_vec.at(i),epsilon);
         vector<vector<complex<double>>> initial_matrix(l-1, vector<complex<double>>(l-1,1));
         vector<vector<vector<complex<double>>>> curr_vec(population_num, initial_matrix);
         
