@@ -50,9 +50,9 @@ main(int argc, char* argv[]){
             curr_vec.at(j) = 1.0/curr_sum;
         }
         
-        vector<complex<double>> pop_vec(100*population_num);
+        vector<complex<double>> pop_vec(population_num);
         
-        for (size_t iter {0}; iter<total_iter; iter++){
+        for (size_t iter {0}; iter<population_num; iter++){
 //            int k = Pdistribution(generator);
             double W = UDdistribution(generator);
             
@@ -71,7 +71,7 @@ main(int argc, char* argv[]){
             mod = abs(g);
             sqr_sum += mod*mod;
         }
-        ipr_vec.at(i) = abs(epsilon*sqr_sum/(100*population_num*M_PI));
+        ipr_vec.at(i) = abs(epsilon*sqr_sum/(population_num*M_PI));
         
     }
     
