@@ -13,18 +13,18 @@ import networkx as nx
 def main():
 
     grains = 151
-    support = 8
-    population_num = 1e3
-    epsilon = 1e-100
+    support = 5
+    population_num = 5e3
+    epsilon = 1e-20
     disorder = float(sys.argv[3])
-    num_iterations = 3e2
+    num_iterations = 2e2
     graph_type = "husimi"
 
     k = int(sys.argv[2])
     l = int(sys.argv[1])
 
-    N = l*5000
-    matrices = 100
+    N = l*1000
+    matrices = 20
 
     print("l = {}, k = {}".format(l,k))
 
@@ -69,20 +69,20 @@ def main():
     plt.xlabel("Lambda")
     plt.ylabel("Spectral Density")
 #    plt.ylim(0,1.0)
-    plt.yscale('log')
+    plt.yscale(sys.argv[4])
     plt.legend()
 
     plt.savefig('pop_dynam_{}_W{}_L{}_K{}.png'.format(graph_type,disorder,l,k), bbox_inches='tight')
 
     subprocess.run("gsutil mv pop_dynam_{}_W{}_L{}_K{}.png gs://anderson_loc/husimi/figures/".format(graph_type,disorder,l,k),shell=True)
 
-    with open('pop_dynam_{}_W{}_L{}_K{}_pop_data.png'.format(graph_type,disorder,l,k),'w') as myfile1:
+    with open('pop_dynam_{}_W{}_L{}_K{}_pop_data.csv'.format(graph_type,disorder,l,k),'w') as myfile1:
         wr1 = csv.writer(myfile1, quoting=csv.QUOTE_ALL)
         wr1.writerow(aver_vec.tolist())
 
-    with open('pop_dynam_{}_W{}_L{}_K{}_mat_data.png'.format(graph_type,disorder,l,k),'w') as myfile2:
+    with open('pop_dynam_{}_W{}_L{}_K{}_mat_data.csv'.format(graph_type,disorder,l,k),'w') as myfile2:
         wr2 = csv.writer(myfile2, quoting=csv.QUOTE_ALL)
-        wr2.writerow(aig_vec.tolist())
+        wr2.writerow(eig_vec.tolist())
 
 if __name__ == "__main__":
     main()

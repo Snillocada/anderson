@@ -59,6 +59,7 @@ int main(int argc, char* argv[]){
     double epsilon {stod(argv[6])};
     double disorder {stod(argv[7])};
     size_t num_iterations {stoul(argv[8])};
+    double translation {stod(argv[9])};
 
     double scale {(2*k)-1};
     
@@ -71,7 +72,7 @@ int main(int argc, char* argv[]){
     uniform_real_distribution<double> UDdistribution(-(disorder/2.0),disorder/2.0);    
     
     for (size_t i {0};i<grains;i++){
-        lambda_vec.at(i) = (i-((static_cast<double>(grains)-1)/2))*(support*2/(grains-1));
+        lambda_vec.at(i) = translation + (i)*(support/(grains-1));
         
         z = complex<double>(-lambda_vec.at(i),epsilon);
         vector<vector<complex<double>>> initial_matrix(l-1, vector<complex<double>>(l-1,1));
