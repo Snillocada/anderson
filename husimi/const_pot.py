@@ -46,6 +46,7 @@ def main():
                             A[edge[i+1]][edge[i]] = 1
                     curr_sum = np.sum(np.sum(A,axis = 1) != k*(2))
                 A += c*np.identity(N)
+                A = np.true_divide(A,c)
             eig_vec = np.append(eig_vec,LA.eigvalsh(A))
 
         plot = plt.hist(eig_vec,bins = 100, density=True, histtype = 'step',label='c={}'.format(c))
