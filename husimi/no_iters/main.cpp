@@ -67,10 +67,19 @@ int main(int argc, char* argv[]){
     default_random_engine generator;
     uniform_int_distribution<int> Udistribution(0,population_num-1);    
     uniform_real_distribution<double> UDdistribution(-(disorder/2.0),disorder/2.0);
+    uniform_real_distribution<double> INdistribution(-1,1);
     z = complex<double>(-energy,epsilon);
-    vector<vector<complex<double>>> initial_matrix(l-1, vector<complex<double>>(l-1,1)); 
+
+    vector<vector<complex<double>>> initial_matrix(l-1, vector<complex<double>>(l-1)); 
     vector<vector<vector<complex<double>>>> curr_vec(population_num, initial_matrix);
 
+    for (auto &mat:curr_vec){
+        for (auto &row:mat){
+	    for (auto &element:row){
+		element = complex<double>(INdistribution(generator),0.1);
+	    }
+	}
+    }
 
     for (size_t course_iter {0};course_iter<num_iterations;course_iter++){
         
