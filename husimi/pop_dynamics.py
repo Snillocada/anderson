@@ -59,7 +59,7 @@ def main():
                     for i in range(l-1):
                         A[edge[i]][edge[i+1]] = 1
                         A[edge[i+1]][edge[i]] = 1
-                curr_sum = np.sum(np.sum(A,axis = 1) != k*(2))
+                curr_sum = np.sum(np.sum(A,axis = 1) != k)
             A += np.diag(np.random.uniform(-disorder/2,disorder/2,N))
         eig_vec = np.append(eig_vec,LA.eigvalsh(A))
 
