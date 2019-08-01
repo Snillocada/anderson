@@ -13,7 +13,7 @@ def factors(n):
     return set(reduce(list.__add__, 
         ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 
-N_vec = [9240,4120]
+N_vec = [9240*3,9240*2]
 plt.figure(figsize=(15,10))  
 for N in N_vec:
     fact_list = list(factors(N))[3:-1]
