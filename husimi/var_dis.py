@@ -9,7 +9,7 @@ import sys
 grains = 25
 support = 6
 population_num = 4e2
-k = 2
+k = int(sys.argv[2])
 l_top = int(sys.argv[1])
 epsilon = 1e-100 
 disorder_start = 18
